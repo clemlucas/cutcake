@@ -13,14 +13,12 @@ export default class Overlay extends Component {
     }
 
     onCapture() {
-        console.log("onCapture()");
         this
             .props
             .onCapture();
     }
 
     onBack() {
-        console.log("onBack()");
         this
             .props
             .onBack();

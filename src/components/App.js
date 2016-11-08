@@ -53,8 +53,6 @@ export default class App extends Component {
                 .camera
                 .capture()
                 .then((data) => {
-                    console.log(data);
-
                     this.setState({pictureTaken: true, picturePath: data.path});
                 })
                 .catch(err => console.error(err));
@@ -66,7 +64,6 @@ export default class App extends Component {
     }
 
     componentDidMount() {
-        console.log("App: componentDidMount", this.camera);
         this.setState({camera: this.camera});
     }
 
@@ -89,7 +86,6 @@ export default class App extends Component {
                 </Camera>
             );
         }
-        console.log(this.state.picturePath, typeof(this.state.picturePath));
         return (
             <BackgroundImage
                 source={{
