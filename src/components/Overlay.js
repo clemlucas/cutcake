@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {View, Image, TouchableHighlight, Dimensions} from 'react-native';
+import GuideLine from './GuideLine';
 
 import styles from '../styles';
 
@@ -11,9 +12,15 @@ export default class Overlay extends Component {
     constructor(props) {
         super(props);
 
-        this.renderControl = this.renderControl.bind(this);
-        this.onBack = this.render.bind(this);
-        this.onCapture = this.render.bind(this);
+        this.renderControl = this
+            .renderControl
+            .bind(this);
+        this.onBack = this
+            .render
+            .bind(this);
+        this.onCapture = this
+            .render
+            .bind(this);
     }
 
     onCapture() {
@@ -60,6 +67,11 @@ export default class Overlay extends Component {
         );
     }
 
+    // <Image                     style={[
+    // styles.partPicture, {                             flex: .6
+    //      }                     ]}
+    // source={require('../../assets/images/cutcake-8part.png')}
+    // resizeMode="contain"/>
     render() {
         return (
             <View
@@ -68,19 +80,11 @@ export default class Overlay extends Component {
                     flex: 1
                 }
             ]}>
-                <Image
-                    style={[
-                    styles.partPicture, {
-                        flex: .6
-                    }
-                ]}
-                    source={require('../../assets/images/cutcake-8part.png')}
-                    resizeMode="contain"/>
+                <GuideLine/>
 
                 <View
                     style={{
                     flex: .4,
-                    flexDirection: 'row',
                     justifyContent: 'center'
                 }}>
                     {this.renderControl()}
