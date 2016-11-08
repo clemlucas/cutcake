@@ -7,6 +7,8 @@ import com.facebook.react.shell.MainReactPackage;
 import java.util.Arrays;
 import java.util.List;
 
+import com.lwansbrough.RCTCamera.RCTCameraPackage;
+
 public class MainActivity extends ReactActivity {
 
     /**
@@ -33,8 +35,9 @@ public class MainActivity extends ReactActivity {
      */
     @Override
     protected List<ReactPackage> getPackages() {
-        return Arrays.<ReactPackage>asList(
-            new MainReactPackage()
+        return Arrays.asList(
+            new MainReactPackage(),
+            new RCTCameraPackage()
         );
     }
 }

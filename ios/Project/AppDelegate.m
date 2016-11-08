@@ -31,8 +31,8 @@
    * on the same Wi-Fi network.
    */
 
-  jsCodeLocation = [NSURL URLWithString:@"http://localhost:8081/index.ios.bundle?platform=ios&dev=true"];
-//  jsCodeLocation = [NSURL URLWithString:@"http://192.168.1.6:8081/index.ios.bundle?platform=ios&dev=true"];
+//  jsCodeLocation = [NSURL URLWithString:@"http://localhost:8081/index.ios.bundle?platform=ios&dev=true"];
+  jsCodeLocation = [NSURL URLWithString:@"http://172.20.10.2:8081/index.ios.bundle?platform=ios&dev=true"];
   /**
    * OPTION 2
    * Load from pre-bundled file on disk. The static bundle is automatically
@@ -47,7 +47,6 @@
                                                       moduleName:@"Project"
                                                initialProperties:nil
                                                    launchOptions:launchOptions];
-  rootView.backgroundColor = [[UIColor alloc] initWithRed:1.0f green:1.0f blue:1.0f alpha:1];
 
   self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
   UIViewController *rootViewController = [UIViewController new];

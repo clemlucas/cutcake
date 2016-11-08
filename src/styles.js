@@ -1,23 +1,27 @@
-import { Dimensions, StyleSheet } from 'react-native';
+import {Dimensions, StyleSheet} from 'react-native';
 
-const windowHeight = Dimensions.get('window').height;
-const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions
+  .get('window')
+  .height;
+const windowWidth = Dimensions
+  .get('window')
+  .width;
 
 const styles = StyleSheet.create({
-    row: {
-		flexDirection: 'row',
-		justifyContent: 'center',
-		alignItems: 'center'
-	},
-	column: {
-		flexDirection: 'column',
-		justifyContent: 'center',
-		alignItems: 'center'
-	},
-    container: {
-		flex: 1
-	},
-    preview: {
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  column: {
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  container: {
+    flex: .9
+  },
+  preview: {
     flex: 1,
     justifyContent: 'flex-end',
     alignItems: 'center',
@@ -31,6 +35,24 @@ const styles = StyleSheet.create({
     color: '#000',
     padding: 10,
     margin: 40
+  },
+  partPicture: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  backButton: {
+    width: windowWidth * .1,
+    right: 20,
+    // marginRight: 3*(windowWidth * .1) / 2
+  },
+  captureButton: {
+    alignSelf: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
+    // position: 'absolute',
+    width: windowWidth * .2
   }
 });
 
