@@ -10,6 +10,10 @@ const windowWidth = Dimensions
 export default class Overlay extends Component {
     constructor(props) {
         super(props);
+
+        this.renderControl = this.renderControl.bind(this);
+        this.onBack = this.render.bind(this);
+        this.onCapture = this.render.bind(this);
     }
 
     onCapture() {
@@ -22,6 +26,38 @@ export default class Overlay extends Component {
         this
             .props
             .onBack();
+    }
+
+    renderControl() {
+        if (this.props.pictureTaken) {
+            return (
+                <TouchableHighlight
+                    underlayColor='transparent'
+                    onPress={this
+                    .onBack
+                    .bind(this)}>
+                    <Image
+                        onPress={this
+                        .onBack
+                        .bind(this)}
+                        style={styles.backButton}
+                        source={require('../../assets/images/back2.png')}
+                        resizeMode='contain'/>
+                </TouchableHighlight>
+            );
+        }
+        return (
+            <TouchableHighlight
+                underlayColor='transparent'
+                onPress={this
+                .onCapture
+                .bind(this)}>
+                <Image
+                    style={styles.captureButton}
+                    source={require('../../assets/images/capture2.png')}
+                    resizeMode='contain'/>
+            </TouchableHighlight>
+        );
     }
 
     render() {
@@ -47,33 +83,7 @@ export default class Overlay extends Component {
                     flexDirection: 'row',
                     justifyContent: 'center'
                 }}>
-                    <TouchableHighlight
-                        underlayColor='transparent'
-                        onPress={this.props.pictureTaken
-                        ? this
-                            .onBack
-                            .bind(this)
-                        : this
-                            .onCapture
-                            .bind(this)}
-                        style={{
-                        marginRight: (this.props.pictureTaken
-                            ? (windowWidth * .2) / 2
-                            : 0)
-                    }}>
-                        {this.props.pictureTaken
-                            ? <Image
-                                    onPress={this
-                                    .onBack
-                                    .bind(this)}
-                                    style={styles.backButton}
-                                    source={require('../../assets/images/back2.png')}
-                                    resizeMode='contain'/>
-                            : <Image
-                                style={styles.captureButton}
-                                source={require('../../assets/images/capture2.png')}
-                                resizeMode='contain'/>}
-                    </TouchableHighlight>
+                    {this.renderControl()}
                 </View>
             </View>
         );
