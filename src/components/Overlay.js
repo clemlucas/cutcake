@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {View, Image, TouchableHighlight, Dimensions} from 'react-native';
+import GuideLine from  './GuideLine'; 
 
 import styles from '../styles';
 
@@ -28,54 +29,55 @@ export default class Overlay extends Component {
         return (
             <View
                 style={[
-                styles.column, {
-                    flex: 1
-                }
-            ]}>
+                    styles.column, {
+                        flex: 1
+                    }
+                ]}>
+                <GuideLine />
                 <Image
                     style={[
-                    styles.partPicture, {
-                        flex: .6
-                    }
-                ]}
+                        styles.partPicture, {
+                            flex: .6
+                        }
+                    ]}
                     source={require('../../assets/images/cutcake-8part.png')}
                     resizeMode="contain"/>
 
                 <View
                     style={{
-                    flex: .4,
-                    flexDirection: 'row',
-                    justifyContent: 'center'
-                }}>
+                        flex: .4,
+                            flexDirection: 'row',
+                            justifyContent: 'center'
+                    }}>
                     <TouchableHighlight
                         underlayColor='transparent'
                         onPress={this.props.pictureTaken
-                        ? this
-                            .onBack
-                            .bind(this)
-                        : this
-                            .onCapture
-                            .bind(this)}
-                        style={{
-                        marginRight: (this.props.pictureTaken
-                            ? (windowWidth * .2) / 2
-                            : 0)
-                    }}>
-                        {this.props.pictureTaken
-                            ? <Image
-                                    onPress={this
-                                    .onBack
-                                    .bind(this)}
-                                    style={styles.backButton}
-                                    source={require('../../assets/images/back2.png')}
-                                    resizeMode='contain'/>
-                            : <Image
-                                style={styles.captureButton}
-                                source={require('../../assets/images/capture2.png')}
-                                resizeMode='contain'/>}
-                    </TouchableHighlight>
-                </View>
-            </View>
+                            ? this
+                                .onBack
+                                .bind(this)
+                                : this
+                                .onCapture
+                                .bind(this)}
+                                style={{
+                                    marginRight: (this.props.pictureTaken
+                                        ? (windowWidth * .2) / 2
+                                            : 0)
+                                }}>
+                                {this.props.pictureTaken
+                                    ? <Image
+                                        onPress={this
+                                            .onBack
+                                                .bind(this)}
+                                                style={styles.backButton}
+                                                source={require('../../assets/images/back2.png')}
+                                                resizeMode='contain'/>
+                                        : <Image
+                                            style={styles.captureButton}
+                                            source={require('../../assets/images/capture2.png')}
+                                            resizeMode='contain'/>}
+                                    </TouchableHighlight>
+                                </View>
+                            </View>
         );
     }
 }
