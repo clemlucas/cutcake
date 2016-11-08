@@ -43,9 +43,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   backButton: {
-    width: windowWidth * .1,
-    right: 20,
-    // marginRight: 3*(windowWidth * .1) / 2
+    width: windowWidth * .2,
   },
   captureButton: {
     alignSelf: 'center',
@@ -53,6 +51,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     // position: 'absolute',
     width: windowWidth * .2
+  },
+  backgroundImage: {
+    flex: 1,
+    width: null,
+    height: null
   }
 });
 

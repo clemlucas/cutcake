@@ -7,20 +7,23 @@ const windowWidth = Dimensions
     .get('window')
     .width;
 
-export default class Footer extends Component {
+export default class Overlay extends Component {
     constructor(props) {
         super(props);
     }
-    
+
     onCapture() {
+        console.log("onCapture()");
         this
             .props
-            .camera
-            .capture()
-            .then((data) => console.log(data))
-            .catch(err => console.error(err));
+            .onCapture();
+    }
 
-        this.props.onCapture();
+    onBack() {
+        console.log("onBack()");
+        this
+            .props
+            .onBack();
     }
 
     render() {
@@ -46,25 +49,32 @@ export default class Footer extends Component {
                     flexDirection: 'row',
                     justifyContent: 'center'
                 }}>
-                    {this.props.pictureTaken
-                        ? <Image
-                                style={styles.backButton}
-                                source={require('../../assets/images/back2.png')}
-                                resizeMode='contain'/>
-                        : null}
-
                     <TouchableHighlight
                         underlayColor='transparent'
-                        onPress={this.onCapture.bind(this)}
+                        onPress={this.props.pictureTaken
+                        ? this
+                            .onBack
+                            .bind(this)
+                        : this
+                            .onCapture
+                            .bind(this)}
                         style={{
                         marginRight: (this.props.pictureTaken
                             ? (windowWidth * .2) / 2
                             : 0)
                     }}>
-                        <Image
-                            style={styles.captureButton}
-                            source={require('../../assets/images/capture2.png')}
-                            resizeMode='contain'/>
+                        {this.props.pictureTaken
+                            ? <Image
+                                    onPress={this
+                                    .onBack
+                                    .bind(this)}
+                                    style={styles.backButton}
+                                    source={require('../../assets/images/back2.png')}
+                                    resizeMode='contain'/>
+                            : <Image
+                                style={styles.captureButton}
+                                source={require('../../assets/images/capture2.png')}
+                                resizeMode='contain'/>}
                     </TouchableHighlight>
                 </View>
             </View>
